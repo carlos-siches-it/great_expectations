@@ -1,6 +1,16 @@
 import great_expectations as gx
+from great_expectations.data_context import FileDataContext
 
-context = gx.get_context()
+
+# context = gx.get_context(
+#     context_root_dir="./gx/"
+# )
+
+context = FileDataContext(
+    context_root_dir="./gx/"
+)
+
+
 checkpoint = context.get_checkpoint(name="my_checkpoint")
 checkpoint.run()
 
