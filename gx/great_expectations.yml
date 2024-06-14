@@ -52,11 +52,27 @@ stores:
       class_name: TupleFilesystemStoreBackend
       base_directory: expectations/
 
+  expectations_AZ_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleAzureBlobStoreBackend
+      container: gxs
+      prefix: expectations
+      connection_string: ${AZURE_STORAGE_CONNECTION_STRING}
+
   validations_store:
     class_name: ValidationsStore
     store_backend:
       class_name: TupleFilesystemStoreBackend
       base_directory: uncommitted/validations/
+
+  validations_AZ_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleAzureBlobStoreBackend
+      container: gxs
+      prefix: validations
+      connection_string: ${AZURE_STORAGE_CONNECTION_STRING}
 
   evaluation_parameter_store:
     class_name: EvaluationParameterStore
@@ -67,6 +83,14 @@ stores:
       suppress_store_backend_id: true
       base_directory: checkpoints/
 
+  checkpoint_AZ_store:
+    class_name: CheckpointStore
+    store_backend:
+      class_name: TupleAzureBlobStoreBackend
+      container: gxs
+      prefix: checkpoints
+      connection_string: ${AZURE_STORAGE_CONNECTION_STRING}
+
   profiler_store:
     class_name: ProfilerStore
     store_backend:
@@ -74,22 +98,32 @@ stores:
       suppress_store_backend_id: true
       base_directory: profilers/
 
-expectations_store_name: expectations_store
-validations_store_name: validations_store
+expectations_store_name: expectations_AZ_store
+validations_store_name: validations_AZ_store
 evaluation_parameter_store_name: evaluation_parameter_store
-checkpoint_store_name: checkpoint_store
+checkpoint_store_name: checkpoint_AZ_store
 
 data_docs_sites:
   # Data Docs make it simple to visualize data quality in your project. These
   # include Expectations, Validations & Profiles. The are built for all
   # Datasources from JSON artifacts in the local repo including validations &
   # profiles from the uncommitted directory. Read more at https://docs.greatexpectations.io/docs/terms/data_docs
-  local_site:
+  # local_site:
+  #   class_name: SiteBuilder
+  #   show_how_to_buttons: true
+  #   store_backend:
+  #     class_name: TupleFilesystemStoreBackend
+  #     base_directory: uncommitted/data_docs/local_site/
+  #   site_index_builder:
+  #     class_name: DefaultSiteIndexBuilder
+
+  az_site:
     class_name: SiteBuilder
-    show_how_to_buttons: true
     store_backend:
-      class_name: TupleFilesystemStoreBackend
-      base_directory: uncommitted/data_docs/local_site/
+      class_name: TupleAzureBlobStoreBackend
+      container: web
+      prefix: gx_site
+      connection_string: ${AZURE_STORAGE_CONNECTION_STRING}
     site_index_builder:
       class_name: DefaultSiteIndexBuilder
 

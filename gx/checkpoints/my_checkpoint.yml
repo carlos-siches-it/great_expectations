@@ -18,7 +18,13 @@ action_list:
       class_name: UpdateDataDocsAction
 evaluation_parameters: {}
 runtime_configuration: {}
-validations: []
+validations:
+  - batch_request:
+      datasource_name: my_pandas_dataframe
+      data_asset_name: my_data_asset
+      options: {}
+      batch_slice:
+    expectation_suite_name: my_expectation_suite
 profilers: []
 ge_cloud_id:
 expectation_suite_ge_cloud_id:
