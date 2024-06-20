@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Python Functions",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 9091
+            },
+            "justMyCode": false,
+            "preLaunchTask": "func: host start"
+        }
+        // },
+        // {
+        //     "name": "Launch ephemeral",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}/ephemeral.py",
+        //     "justMyCode": false,
+        //     "console": "integratedTerminal"
+        // }
+    ]
+}
