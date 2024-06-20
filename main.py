@@ -1,18 +1,13 @@
-import great_expectations as gx
-from great_expectations.data_context import FileDataContext
+# from great_expectations.data_context import FileDataContext, EphemeralDataContext
+# from great_expectations.data_context.types.base import DataContextConfig
+# from great_expectations.data_context.data_context_variables import 
 
+# context = EphemeralDataContext()
 
-# context = gx.get_context(
-#     context_root_dir="./gx/"
-# )
+# context = gx.get_context(context_root_dir="./gx")
 
-context = FileDataContext(
-    context_root_dir="./gx/"
-)
-
-
-checkpoint = context.get_checkpoint(name="my_checkpoint")
-checkpoint.run()
+# checkpoint = context.get_checkpoint(name="my_checkpoint")
+# checkpoint.run()
 
 
 # checkpoint = context.get_checkpoint(name="my_checkpoint")
